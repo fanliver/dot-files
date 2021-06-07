@@ -52,6 +52,7 @@ abbr -a batdiff 'git diff --name-only --diff-filter=d | xargs bat --diff'
 abbr -a r 'ranger'
 
 abbr -a e 'nvim'
+abbr -a nv '~/nvim-0.5/bin/nvim'
 abbr -a lg 'lazygit'
 abbr -a pc '~/projects/personio/perctl'
 abbr -a plg 'lnav ~/projects/personio/app/storage-local/logs/laravel.log'
@@ -76,6 +77,7 @@ abbr -a fpc 'prfzf c'
 abbr -a fp 'prfzf cd'
 
 abbr -a glc './gradlew.local'
+abbr -a grd './gradlew'
 abbr -a vpn 'sudo /usr/local/opt/openvpn/sbin/openvpn --config ~/openvpn/client.ovpn'
 
 abbr -a tmp tmux popup -EE -h 70% -w 70%
