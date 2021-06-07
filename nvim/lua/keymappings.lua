@@ -57,4 +57,13 @@ map('v', 'K', [[:m '<-2<CR>gv=gv]])
 
 map('n', '<leader>rl', [[:luafile $MYVIMRC<CR>]])
 
+-- Floaterm (voldikss/vim-floaterm)
+map('n', '<leader>tn', ':FloatermNew<CR>')
+map('n', '<leader>tt', ':FloatermToggle!<CR>')
+map('t', '<leader>tn', [[<C-\><C-n>:FloatermNew<CR>]])
+map('t', '<leader>tl', [[<C-\><C-n>:FloatermNext<CR>]])
+map('t', '<leader>th', [[<C-\><C-n>:FloatermPrev<CR>]])
+map('t', '<leader>tt', [[:FloatermToggle!<CR>]])
+map('t', '<leader>tb', [[<C-\><C-n>]])
+
 print("Loaded lua/keymappings.lua")

@@ -34,24 +34,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/CSApprox'
-Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
-Plug 'voldikss/vim-floaterm'
-Plug 'airblade/vim-rooter'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'dag/vim-fish'
-Plug 'tpope/vim-surround'
-Plug 'ryanoasis/vim-devicons'
-Plug 'christoomey/vim-system-copy'
-Plug 'mogelbrod/vim-jsonpath'
-Plug 'alvan/vim-closetag'
-Plug 'jiangmiao/auto-pairs'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -64,14 +49,6 @@ if exists('make')
         let g:make = 'make'
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
-
-"" Vim-Session
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
-
-"" Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 "" Color
 Plug 'tomasr/molokai'
@@ -112,7 +89,7 @@ filetype plugin indent on
 syntax on
 
 let no_buffers_menu=1
-silent! colorscheme molokai
+" silent! colorscheme molokai
 hi Normal guibg=NONE ctermbg=NONE
 hi MatchParen guifg=red ctermfg=red guibg=white ctermbg=white
 
@@ -129,13 +106,6 @@ if has("gui_running")
 else
   let g:CSApprox_loaded = 1
 
-  " IndentLine
-  let g:indentLine_enabled = 1
-  let g:indentLine_concealcursor = 0
-  let g:indentLine_char = '┆'
-  let g:indentLine_faster = 1
-
-  
 endif
 
 "" Use modeline overrides
@@ -147,24 +117,6 @@ if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
 
-" vim-airline
-let g:airline_theme = 'powerlineish'
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
-
-"*****************************************************************************
-"" Json path config
-"*****************************************************************************
-" Optionally copy path to a named register (* in this case) when calling :JsonPath
-let g:jsonpath_register = '*'
-
-" Define mappings for json buffers
-au FileType json noremap <buffer> <silent> <leader>jc :call jsonpath#echo()<CR>
-au FileType json noremap <buffer> <silent> <leader>jg :call jsonpath#goto()<CR>
-
-
 "*****************************************************************************
 "" Autocmd Rules
 "*****************************************************************************
@@ -173,9 +125,6 @@ augroup vimrc-sync-fromstart
   autocmd!
   autocmd BufEnter * :syntax sync maxlines=200
 augroup END
-
-"vim-rooter pattern
-let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh', 'package.json', 'build.gradle', 'build.gradle.kts']
 
 "*****************************************************************************
 "" Mappings
@@ -308,128 +257,11 @@ augroup vimrc-python
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
 
-" jedi-vim
-let g:jedi#popup_on_dot = 0
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
-let g:jedi#show_call_signatures = "0"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#smart_auto_mappings = 0
-
-"*****************************************************************************
-"" Convenience variables
-"*****************************************************************************
-
-" vim-airline
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-if !exists('g:airline_powerline_fonts')
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_left_sep          = '▶'
-  let g:airline_left_alt_sep      = '»'
-  let g:airline_right_sep         = '◀'
-  let g:airline_right_alt_sep     = '«'
-  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-  let g:airline#extensions#readonly#symbol   = '⊘'
-  let g:airline#extensions#linecolumn#prefix = '¶'
-  let g:airline#extensions#paste#symbol      = 'ρ'
-  let g:airline_symbols.linenr    = '␊'
-  let g:airline_symbols.branch    = '⎇'
-  let g:airline_symbols.paste     = 'ρ'
-  let g:airline_symbols.paste     = 'Þ'
-  let g:airline_symbols.paste     = '∥'
-  let g:airline_symbols.whitespace = 'Ξ'
-else
-  let g:airline#extensions#tabline#left_sep = ''
-  let g:airline#extensions#tabline#left_alt_sep = ''
-
-  " powerline symbols
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = ''
-endif
- 
-"*******************************************************************************
-"floaterm key mappings
-"*******************************************************************************
-nnoremap <leader>tn :FloatermNew<cr>
-nnoremap <leader>tt :FloatermToggle!<cr>
-tnoremap <leader>tn <C-\><C-n>:FloatermNew<cr>
-tnoremap <leader>tl <C-\><C-n>:FloatermNext<cr>
-tnoremap <leader>th <C-\><C-n>:FloatermPrev<cr>
-tnoremap <leader>tt <C-\><C-n>:FloatermToggle!<cr>
-tnoremap <leader>tb <C-\><C-n>
-let g:floaterm_autoclose=1
-let g:floaterm_winblend=0
-let g:floaterm_width=0.8
-let g:floaterm_height=0.8
-
-
 " Reload vim configuration
 nnoremap <leader>rl :so $MYVIMRC<cr>
 
 
-hi CursorLine   cterm=NONE ctermbg=236 guibg=236
-
-"******************************************************************************
-" vim-closetag config
-"******************************************************************************
-
-" filenames like *.xml, *.html, *.xhtml, ...
-" These are the file extensions where this plugin is enabled.
-"
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
-
-" filenames like *.xml, *.xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified files.
-"
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.tsx'
-
-" filetypes like xml, html, xhtml, ...
-" These are the file types where this plugin is enabled.
-"
-let g:closetag_filetypes = 'html,xhtml,phtml,typescriptreact,xml'
-
-" filetypes like xml, xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified files.
-"
-let g:closetag_xhtml_filetypes = 'xhtml,jsx,tsx,typescriptreact'
-
-" integer value [0|1]
-" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
-"
-let g:closetag_emptyTags_caseSensitive = 1
-
-" dict
-" Disables auto-close if not in a "valid" region (based on filetype)
-"
-let g:closetag_regions = {
-    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
-    \ 'javascript.jsx': 'jsxRegion',
-    \ 'typescriptreact': 'jsxRegion,tsxRegion',
-    \ 'javascriptreact': 'jsxRegion',
-    \ }
-
-" Shortcut for closing tags, default is '>'
-"
-let g:closetag_shortcut = '>'
-
-" Add > at current position without closing the current tag, default is ''
-"
-let g:closetag_close_shortcut = '<leader>>'
-
-" Do not load netrw on nvim startup
-let loaded_netrwPlugin = 1
+hi CursorLine cterm=NONE ctermbg=236 guibg=236
 
 "******************************************************************************
 " Greeting!

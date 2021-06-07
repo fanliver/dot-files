@@ -108,5 +108,8 @@ opt.updatetime = 300
 opt.foldmethod = 'expr'
 opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
+-- Do not load netrw on nvim startup
+g.loaded_netrwPlugin = 1
+
 print("Loaded lua/options.lua")
 
