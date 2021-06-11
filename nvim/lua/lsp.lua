@@ -1,5 +1,3 @@
-
-print("Start loading lua/lsp.lua")
 local nvim_lsp = require('lspconfig')
 
 -- pyright
@@ -46,4 +44,3 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
 
-print("Loaded lua/lsp.lua")

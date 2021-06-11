@@ -1,5 +1,3 @@
-print("Start loading lua/options.lua")
-
 local cmd, fn, g, opt, api = vim.cmd, vim.fn, vim.g, vim.opt, vim.api
 
 -- Set encoding
@@ -62,7 +60,7 @@ opt.guicursor = 'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,sm:block'
 -- Set minimum number of screen lines before/after the cursor
 opt.scrolloff=6
 
--- Term color
+-- -- Term color
 opt.termguicolors = true
 
 -- Command line completion mode
@@ -111,5 +109,5 @@ opt.foldexpr = 'nvim_treesitter#foldexpr()'
 -- Do not load netrw on nvim startup
 g.loaded_netrwPlugin = 1
 
-print("Loaded lua/options.lua")
+g.no_buffers_menu = 1
 

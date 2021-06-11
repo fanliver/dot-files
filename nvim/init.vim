@@ -1,5 +1,3 @@
-
-echom "Loading init.vim"
 "*****************************************************************************
 "" Basic Setup
 "*****************************************************************************"
@@ -50,48 +48,17 @@ if exists('make')
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
-"" Color
-Plug 'tomasr/molokai'
-
-"*****************************************************************************
-"" Custom bundles
-"*****************************************************************************
-
-" c
-Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
-Plug 'ludwig/split-manpage.vim'
-
-" html
-"" HTML Bundle
-Plug 'hail2u/vim-css3-syntax'
-Plug 'gko/vim-coloresque'
-Plug 'tpope/vim-haml'
-Plug 'mattn/emmet-vim'
-
-"*****************************************************************************
-"*****************************************************************************
-
-"" Include user's extra bundle
-if filereadable(expand("~/.config/nvim/local_bundles.vim"))
-  source ~/.config/nvim/local_bundles.vim
-endif
-
 call plug#end()
 
 " Required:
 filetype plugin indent on
 
-
-
 "*****************************************************************************
 "" Visual Settings
 "*****************************************************************************
-syntax on
 
-let no_buffers_menu=1
-" silent! colorscheme molokai
 hi Normal guibg=NONE ctermbg=NONE
-hi MatchParen guifg=red ctermfg=red guibg=white ctermbg=white
+hi MatchParen guifg=#FFFF66 guibg=#404040
 
 set mousemodel=popup
 set t_Co=256
@@ -232,38 +199,11 @@ if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
 
-noremap YY "+y<CR>
-noremap <leader>p "+gP<CR>
-noremap XX "+x<CR>
-
 "" Open current line on GitHub
 nnoremap <Leader>o :.Gbrowse<CR>
-
-"*****************************************************************************
-"" Custom configs
-"*****************************************************************************
-
-" vim-javascript
-augroup vimrc-javascript
-  autocmd!
-  autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
-augroup END
-
-" python
-augroup vimrc-python
-  autocmd!
-  autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
-      \ formatoptions+=croq softtabstop=4
-      \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-augroup END
 
 " Reload vim configuration
 nnoremap <leader>rl :so $MYVIMRC<cr>
 
+hi CursorLine cterm=NONE ctermbg=236 guibg=#404040
 
-hi CursorLine cterm=NONE ctermbg=236 guibg=236
-
-"******************************************************************************
-" Greeting!
-"******************************************************************************
-echom "init.vim is loaded."

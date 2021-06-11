@@ -20,6 +20,8 @@ require 'paq-nvim' {
     { 'alvan/vim-closetag' };
     { 'ryanoasis/vim-devicons' };
     { 'jiangmiao/auto-pairs' };
+    { 'tomasr/molokai' };
+    { 'gko/vim-coloresque' };
 }
 
 require'nvim-treesitter.configs'.setup {
@@ -123,15 +125,16 @@ g.closetag_xhtml_filetypes = 'xhtml,jsx,tsx,typescriptreact'
 g.closetag_emptyTags_caseSensitive = 1
 -- dict
 -- Disables auto-close if not in a "valid" region (based on filetype)
--- g.closetag_regions = {
---     typescript.tsx = 'jsxRegion,tsxRegion',
---     javascript.jsx = 'jsxRegion',
---     typescriptreact = 'jsxRegion,tsxRegion',
---     javascriptreact = 'jsxRegion',
--- }
+g.closetag_regions = {
+    ["typescript.tsx"] = 'jsxRegion,tsxRegion',
+    ["javascript.jsx"] = 'jsxRegion',
+    typescriptreact = 'jsxRegion,tsxRegion',
+    javascriptreact = 'jsxRegion',
+}
 -- Shortcut for closing tags, default is '>'
 g.closetag_shortcut = '>'
 -- Add > at current position without closing the current tag, default is ''
 g.closetag_close_shortcut = '<leader>>'
 
-
+-- Change colorscheme to molokai
+cmd('silent! colorscheme molokai')

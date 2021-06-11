@@ -1,5 +1,3 @@
-print "Start loading lua/autocmds.lua"
-
 local fn, api = vim.fn, vim.api
 
 local augroups = {
@@ -78,4 +76,3 @@ end
 
 createAutocommands(augroups)
 
-print "Loaded lua/autocmds.lua"

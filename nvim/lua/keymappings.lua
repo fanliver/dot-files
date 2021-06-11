@@ -1,5 +1,3 @@
-print("Start loading lua/keymappings.lua")
-
 local cmd, fn, g, opt, api = vim.cmd, vim.fn, vim.g, vim.opt, vim.api
 
 local function map(mode, lhs, rhs, opts)
@@ -43,9 +41,9 @@ map('', '<leader>v', ':<C-u>vsplit<CR>')
 map('n', '<leader>fp', [[:let @* = expand('%')<CR>]])
 
 -- Buffer navigation
-map('n', '<leader>q', ':bp')
-map('n', '<leader>w', ':bn')
-map('n', '<leader>c', ':bd') -- Close buffer
+map('n', '<leader>q', ':bp<CR>')
+map('n', '<leader>w', ':bn<CR>')
+map('n', '<leader>c', ':bd<CR>') -- Close buffer
 
 -- Keep in visual mode after indentation
 map('v', '<', '<gv')
@@ -63,7 +61,6 @@ map('n', '<leader>tt', ':FloatermToggle!<CR>')
 map('t', '<leader>tn', [[<C-\><C-n>:FloatermNew<CR>]])
 map('t', '<leader>tl', [[<C-\><C-n>:FloatermNext<CR>]])
 map('t', '<leader>th', [[<C-\><C-n>:FloatermPrev<CR>]])
-map('t', '<leader>tt', [[:FloatermToggle!<CR>]])
+map('t', '<leader>tt', [[<C-\><C-n>:FloatermToggle!<CR>]])
 map('t', '<leader>tb', [[<C-\><C-n>]])
 
-print("Loaded lua/keymappings.lua")
