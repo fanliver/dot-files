@@ -64,3 +64,22 @@ map('t', '<leader>th', [[<C-\><C-n>:FloatermPrev<CR>]])
 map('t', '<leader>tt', [[<C-\><C-n>:FloatermToggle!<CR>]])
 map('t', '<leader>tb', [[<C-\><C-n>]])
 
+-- nvim-telescope/telescope.nvim
+local getTelescopeBuiltin = function (functionName)
+    return [[<cmd>lua require('telescope.builtin').]] .. functionName .. [[()<CR>]]
+end
+
+-- " Find files using Telescope command-line sugar.
+map('n', '<leader>e', getTelescopeBuiltin('find_files'))
+map('n', '<leader>fa', getTelescopeBuiltin('live_grep'))
+map('n', '<leader>fb', getTelescopeBuiltin('buffers'))
+map('n', '<leader>fh', getTelescopeBuiltin('help_tags'))
+map('n', '<leader>fw', getTelescopeBuiltin('grep_string'))
+map('n', '<leader>fe', getTelescopeBuiltin('file_browser'))
+map('n', '<leader>rf', getTelescopeBuiltin('oldfiles'))
+map('n', '<leader>ff', getTelescopeBuiltin('current_buffer_fuzzy_find'))
+map('n', '<leader>fs', getTelescopeBuiltin('treesitter'))
+
+-- Browse current line in GitHub repo
+map('n', '<leader>o', [[:GBrowse<CR>]])
+

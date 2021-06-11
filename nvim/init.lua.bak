@@ -1,7 +1,0 @@
-print("Starting loading init.lua")
-
-require('options')
-require('keymappings')
-require('autocmds')
-
-print("Loaded init.lua")

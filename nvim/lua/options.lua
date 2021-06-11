@@ -111,3 +111,16 @@ g.loaded_netrwPlugin = 1
 
 g.no_buffers_menu = 1
 
+-- syntax highlight
+cmd([[
+    hi Normal guibg=NONE ctermbg=NONE
+    hi MatchParen guifg=#FFFF66 guibg=#404040
+    hi CursorLine cterm=NONE ctermbg=236 guibg=#404040
+]])
+
+--modeline
+opt.modeline = true
+opt.modelines = 10
+
+-- filetype plugin
+cmd([[filetype plugin indent on]])

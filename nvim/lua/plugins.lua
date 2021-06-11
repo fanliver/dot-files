@@ -22,6 +22,13 @@ require 'paq-nvim' {
     { 'jiangmiao/auto-pairs' };
     { 'tomasr/molokai' };
     { 'gko/vim-coloresque' };
+    { 'nvim-lua/plenary.nvim' };
+    { 'nvim-lua/popup.nvim' };
+    { 'nvim-telescope/telescope.nvim' };
+    { 'tpope/vim-fugitive' };
+    { 'tpope/vim-rhubarb' };
+    { 'vim-scripts/CSApprox' };
+    { 'Shougo/vimproc.vim' };
 }
 
 require'nvim-treesitter.configs'.setup {
@@ -138,3 +145,15 @@ g.closetag_close_shortcut = '<leader>>'
 
 -- Change colorscheme to molokai
 cmd('silent! colorscheme molokai')
+
+-- telescope
+require('telescope').setup {
+    defaults = {
+        layout_strategy = 'vertical',
+        layout_defaults = {
+            vertical = {
+                preview_height = 0.7
+            }
+        }
+    }
+}
