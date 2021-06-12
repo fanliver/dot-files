@@ -111,6 +111,13 @@ g.loaded_netrwPlugin = 1
 
 g.no_buffers_menu = 1
 
+-- visual settings
+opt.mousemodel = 'popup'
+cmd([[
+    set t_Co=256
+    set guioptions=egmrti
+]])
+
 -- syntax highlight
 cmd([[
     hi Normal guibg=NONE ctermbg=NONE
